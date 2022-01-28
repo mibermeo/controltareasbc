@@ -8,7 +8,7 @@ class Database {
       //Si no tiene configurado el mysql con contrasena la siguiente
       // no es necesaria
       password: 'admin123',
-      database: 'db_colegio'
+      database: 'Tarea'
     });
     return connection;
   }
