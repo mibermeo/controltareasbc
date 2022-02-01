@@ -25,12 +25,12 @@ app.get('/student', (req, res)=>
  
 })
 
-app.get('/subjects', (req, res)=>
+app.get('/user', (req, res)=>
 { 
     const db= new Database()
     const cn=db.getConnection()
     cn.execute(
-        'SELECT * FROM materia', [],
+        'SELECT * FROM user', [],
         function(err, results, fields) {      
           res.json(results)      
         }
@@ -68,18 +68,18 @@ app.post('/student', (req, res) => {
 
 })
 
-app.post('/student', (req, res) => {
+app.post('/user', (req, res) => {
     const body = req.body;
     console.log (body);
     const db = new Database()
     const cn = db.getConnection()
 
     const query = `INSERT INTO materia 
-                (nombre, docente, horario) VALUES
+                (username, password, status) VALUES
                  (?,?,?)`;
 
     cn.execute(
-        query, [body.nombre, body.docente, body.horario],
+        query, [body.username, body.password, body.status],
         function (err, results, fields) {
             if (err) {
                 res.status(500).json({
@@ -98,7 +98,7 @@ app.post('/student', (req, res) => {
 
 
 
-app.post('/guitars', (req, res)=>{
+app.post('/student', (req, res)=>{
     const body = req.body;
     res.json(body)
 })
